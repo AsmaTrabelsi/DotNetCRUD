@@ -10,6 +10,6 @@
         // Navigation properties
 
         public Region Region { get; set; }
-        public WalkDiffcilty WalkDiffcilty { get; set; }
+        public IEnumerable<WalkDiffcilty> WalkDiffcilty { get; set; }
     }
 }
