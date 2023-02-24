@@ -12,6 +12,6 @@ namespace NZWallks.Data
 
         DbSet<Region> Regions { get; set; }
         DbSet<Walk> Walks { get; set; }
-        DbSet<WalkDiffcilty> WalkDiffcilties { get; set; }
+        DbSet<WalkDifficulty> WalkDiffcilties { get; set; }
     }
 }

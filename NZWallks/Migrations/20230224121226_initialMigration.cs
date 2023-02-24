@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NZWallks.Migrations
 {
-    public partial class initalMigration : Migration
+    public partial class initialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,6 +14,7 @@ namespace NZWallks.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Area = table.Column<double>(type: "float", nullable: false),
                     Lat = table.Column<double>(type: "float", nullable: false),
@@ -45,8 +46,7 @@ namespace NZWallks.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Length = table.Column<double>(type: "float", nullable: false),
                     RegionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    WalkDefficulty = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    WalkDiffciltyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    WalkDifficultyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,8 +58,8 @@ namespace NZWallks.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Walks_WalkDiffcilties_WalkDiffciltyId",
-                        column: x => x.WalkDiffciltyId,
+                        name: "FK_Walks_WalkDiffcilties_WalkDifficultyId",
+                        column: x => x.WalkDifficultyId,
                         principalTable: "WalkDiffcilties",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -71,9 +71,9 @@ namespace NZWallks.Migrations
                 column: "RegionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Walks_WalkDiffciltyId",
+                name: "IX_Walks_WalkDifficultyId",
                 table: "Walks",
-                column: "WalkDiffciltyId");
+                column: "WalkDifficultyId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

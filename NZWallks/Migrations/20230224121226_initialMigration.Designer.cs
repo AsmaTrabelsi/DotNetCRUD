@@ -12,8 +12,8 @@ using NZWallks.Data;
 namespace NZWallks.Migrations
 {
     [DbContext(typeof(NZWallksDbContext))]
-    [Migration("20230220215619_updateRegionColumnName")]
-    partial class updateRegionColumnName
+    [Migration("20230224121226_initialMigration")]
+    partial class initialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,10 @@ namespace NZWallks.Migrations
 
                     b.Property<double>("Area")
                         .HasColumnType("float");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Lat")
                         .HasColumnType("float");
@@ -67,22 +71,19 @@ namespace NZWallks.Migrations
                     b.Property<Guid>("RegionId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("WalkDefficulty")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("WalkDiffciltyId")
+                    b.Property<Guid>("WalkDifficultyId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RegionId");
 
-                    b.HasIndex("WalkDiffciltyId");
+                    b.HasIndex("WalkDifficultyId");
 
                     b.ToTable("Walks");
                 });
 
-            modelBuilder.Entity("NZWallks.Models.WalkDiffcilty", b =>
+            modelBuilder.Entity("NZWallks.Models.WalkDifficulty", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -105,15 +106,15 @@ namespace NZWallks.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NZWallks.Models.WalkDiffcilty", "WalkDiffcilty")
+                    b.HasOne("NZWallks.Models.WalkDifficulty", "WalkDifficulty")
                         .WithMany()
-                        .HasForeignKey("WalkDiffciltyId")
+                        .HasForeignKey("WalkDifficultyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Region");
 
-                    b.Navigation("WalkDiffcilty");
+                    b.Navigation("WalkDifficulty");
                 });
 
             modelBuilder.Entity("NZWallks.Models.Region", b =>

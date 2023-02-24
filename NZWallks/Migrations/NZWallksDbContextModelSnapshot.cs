@@ -69,22 +69,19 @@ namespace NZWallks.Migrations
                     b.Property<Guid>("RegionId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("WalkDefficulty")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("WalkDiffciltyId")
+                    b.Property<Guid>("WalkDifficultyId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RegionId");
 
-                    b.HasIndex("WalkDiffciltyId");
+                    b.HasIndex("WalkDifficultyId");
 
                     b.ToTable("Walks");
                 });
 
-            modelBuilder.Entity("NZWallks.Models.WalkDiffcilty", b =>
+            modelBuilder.Entity("NZWallks.Models.WalkDifficulty", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -107,15 +104,15 @@ namespace NZWallks.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NZWallks.Models.WalkDiffcilty", "WalkDiffcilty")
+                    b.HasOne("NZWallks.Models.WalkDifficulty", "WalkDifficulty")
                         .WithMany()
-                        .HasForeignKey("WalkDiffciltyId")
+                        .HasForeignKey("WalkDifficultyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Region");
 
-                    b.Navigation("WalkDiffcilty");
+                    b.Navigation("WalkDifficulty");
                 });
 
             modelBuilder.Entity("NZWallks.Models.Region", b =>
