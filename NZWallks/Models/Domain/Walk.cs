@@ -1,4 +1,4 @@
-﻿namespace NZWallks.Models
+﻿namespace NZWallks.Models.Domain
 {
     public class Walk
     {

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using NZWallks.Data;
+using NZWallks.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,10 @@ builder.Services.AddDbContext<NZWallksDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")) ;
 });
+// injecte IRegionrRpository intferace on RegionRepository class
+builder.Services.AddScoped<IRegionrRpository,RegionRepository>();
 
+object value = builder.Services.AddAutoMapper(typeof(Program).Assembly);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
