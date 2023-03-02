@@ -11,19 +11,19 @@ namespace NZWallks.Controllers
     [Route("[controller]")] // controller means the controller name in this exemple is Regions
     public class RegionsController : Controller
     {
-        private readonly IRegionrRpository regionrRpository;
+        private readonly IRegionrRpository regionRpository;
         public IMapper mapper { get; }
         public RegionsController(IRegionrRpository regionrRpository, IMapper mapper)
         {
            
-            this.regionrRpository = regionrRpository;
+            this.regionRpository = regionrRpository;
             this.mapper = mapper;
         }
         [HttpGet]
         public async Task<IActionResult> GetAllRegionsAsync()
         {
             // Domain Region model
-            var regions = await regionrRpository.GetAllAsync();
+            var regions = await regionRpository.GetAllAsync();
             // return DTO Regions
             var regionsDTO = mapper.Map < List< Models.DTO.Region >> (regions);
             return Ok(regionsDTO);
@@ -34,7 +34,7 @@ namespace NZWallks.Controllers
         [ActionName("GetRegionAsync")]
         public async Task<IActionResult> GetRegionAsync(Guid id)
         {
-            var region = await regionrRpository.GetAsync(id);
+            var region = await regionRpository.GetAsync(id);
             if(region == null)
             {
                 return NotFound();
@@ -60,7 +60,7 @@ namespace NZWallks.Controllers
             };
 
             // passe data to database
-             region = await regionrRpository.AddAsync(region);
+             region = await regionRpository.AddAsync(region);
 
             // convert back to DTO 
             var regionDTO = new Models.DTO.Region
@@ -79,7 +79,7 @@ namespace NZWallks.Controllers
         [Route("{id:guid}")]
         public async Task<IActionResult> DeleteRegionAsync(Guid id)
         {
-            var region = await regionrRpository.DeleteAsync(id);
+            var region = await regionRpository.DeleteAsync(id);
 
             if(region == null)
             {
@@ -115,7 +115,7 @@ namespace NZWallks.Controllers
                 Population = updateRegionRequest.Population,
             };
 
-             regionDomaine = await regionrRpository.UpdateAsync(id, regionDomaine);
+             regionDomaine = await regionRpository.UpdateAsync(id, regionDomaine);
             if(regionDomaine == null) { 
                 return NotFound();
              }

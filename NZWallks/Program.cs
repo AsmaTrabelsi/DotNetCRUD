@@ -16,6 +16,7 @@ builder.Services.AddDbContext<NZWallksDbContext>(options =>
 });
 // injecte IRegionrRpository intferace on RegionRepository class
 builder.Services.AddScoped<IRegionrRpository,RegionRepository>();
+builder.Services.AddScoped<IWalkRepository,WalkRepository>();
 
 object value = builder.Services.AddAutoMapper(typeof(Program).Assembly);
 var app = builder.Build();
