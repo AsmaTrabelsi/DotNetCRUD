@@ -49,10 +49,10 @@ namespace NZWallks.Controllers
         public async Task<IActionResult> AddRegionAsync(Models.DTO.AddRegionRequest addRegionRequest)
         {
             //validate the request 
-            if( !ValidateAddRegionAsync(addRegionRequest))
+            /*if( !ValidateAddRegionAsync(addRegionRequest))
             {
                 return BadRequest(ModelState);
-            }
+            }*/
             // convert DTO Region to Region Domaine
             var region = new Models.Domain.Region()
             {

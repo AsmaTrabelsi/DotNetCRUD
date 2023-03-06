@@ -128,7 +128,8 @@ namespace NZWallks.Controllers
         #region Private methods
         private async Task<bool> ValidateAddWalkAsync(AddWalkRequest addWalkRequest)
         {
-            if(addWalkRequest == null)
+            // this part is validated in the validator folder
+           /* if(addWalkRequest == null)
             {
                 ModelState.AddModelError(nameof(addWalkRequest), $"{nameof(addWalkRequest)} is required");
                 return false;
@@ -142,7 +143,7 @@ namespace NZWallks.Controllers
             {
                 ModelState.AddModelError(nameof(addWalkRequest.Length), $"{nameof(addWalkRequest.Length)} cannot be less then 0");
             }
-
+           */
             var region =  await regionrRpository.GetAsync(addWalkRequest.RegionId);
             if(region == null)
             {
@@ -164,7 +165,9 @@ namespace NZWallks.Controllers
 
         private async Task<bool> ValidateUpdateWalkAsync(UpdateWalkRequest updateWalkRequest)
         {
-            if (updateWalkRequest == null)
+            //            // this part is validated in the validator folder
+
+           /* if (updateWalkRequest == null)
             {
                 ModelState.AddModelError(nameof(updateWalkRequest), $"{nameof(updateWalkRequest)} is required");
                 return false;
@@ -178,6 +181,7 @@ namespace NZWallks.Controllers
             {
                 ModelState.AddModelError(nameof(updateWalkRequest.Length), $"{nameof(updateWalkRequest.Length)} cannot be less then 0");
             }
+           */
 
             var region = await regionrRpository.GetAsync(updateWalkRequest.RegionId);
             if (region == null)
